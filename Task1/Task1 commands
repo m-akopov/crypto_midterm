@@ -1,0 +1,12 @@
+1) echo "This file contains top secret information. AES encryption is used." > secret.txt
+2) openssl enc -aes-256-cbc -salt -in secret.txt -out secret.enc
+
+I enetered passprase at this point, and reentered because verification was needed
+3) Decrypting
+openssl enc -aes-256-cbc -d -in secret.enc -out secret_decrypted.txt
+
+4) Checking files with command 
+diff secret.txt secret_decrypted.txt
+
+
+Gave me empty result, so no differences

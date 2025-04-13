@@ -1,0 +1,29 @@
+Commands:
+
+misha@Mishas-MacBook-Pro Task4 % openssl genpkey -paramfile dhparams.pem -out alice_private.pem
+
+misha@Mishas-MacBook-Pro Task4 % openssl pkey -in alice_private.pem -pubout -out alice_public.pem
+
+misha@Mishas-MacBook-Pro Task4 % openssl genpkey -paramfile dhparams.pem -out bob_private.pem
+
+misha@Mishas-MacBook-Pro Task4 % openssl pkey -in bob_private.pem -pubout -out bob_public.pem
+
+misha@Mishas-MacBook-Pro Task4 % openssl pkeyutl -derive -inkey alice_private.pem -peerkey bob_public.pem -out alice_secret.bin
+
+misha@Mishas-MacBook-Pro Task4 % openssl pkeyutl -derive -inkey bob_private.pem -peerkey alice_public.pem -out bob_secret.bin
+
+misha@Mishas-MacBook-Pro Task4 % diff alice_secret.bin bob_secret.bin 
+// Here I see no difference, they are identical
+
+
+
+
+
+
+
+Diffie-Hellman (DH) is used in:
+
+TLS handshakes: During HTTPS connections, ephemeral Diffie-Hellman (DHE or ECDHE) allows secure negotiation of session keys.
+Signal Protocol: In apps like Signal and WhatsApp, it helps securely generate message keys while enabling forward secrecy.
+
+DH allows two parties to securely derive a shared secret over an insecure channel — without ever exchanging the actual secret. This protects communication from eavesdropping, and with ephemeral DH, even if future keys are compromised, past messages remain secure.

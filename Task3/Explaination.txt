@@ -1,0 +1,5 @@
+Even though we changed just one letter, the HMAC is completely different.
+
+HMAC combines a cryptographic hash function (like SHA-256) with a secret key.
+It's used to ensure both data integrity and authenticity.
+If any bit of the file changes (or if the key is wrong), the HMAC will not match — making it easy to detect tampering.
